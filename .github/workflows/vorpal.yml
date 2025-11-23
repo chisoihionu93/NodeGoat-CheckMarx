@@ -27,3 +27,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_path: "./app/assets/js/chart/chart-data-morris.js"
+          level: error
+          reporter: github-pr-check
