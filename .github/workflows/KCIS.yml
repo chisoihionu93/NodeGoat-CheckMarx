@@ -1,0 +1,38 @@
+name: KICS IaC Scan
+
+on:
+  workflow_dispatch
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  kics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Pull KICS Docker image
+        run: docker pull checkmarx/kics:latest
+
+      - name: Run KICS scan
+        run: |
+          docker run -t --rm \
+            -v ${{ github.workspace }}:/path \
+            checkmarx/kics:latest \
+            scan -p "/path" -o "/path/kics-results"
+
+      - name: Show KICS results
+        run: |
+          echo "===== KICS RESULTS ====="
+          ls -R kics-results || echo "No results produced."
+          cat kics-results/results.json || true
+
+      - name: Upload KICS results artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: kics-results
+          path: kics-results
