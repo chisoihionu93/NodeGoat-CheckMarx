@@ -28,7 +28,7 @@ jobs:
           cat kics-results/results.json || true
 
       - name: Upload KICS results artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: kics-results
           path: kics-results
