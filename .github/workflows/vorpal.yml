@@ -26,7 +26,7 @@ jobs:
         run: zip -r source.zip .
 
       - name: Run Vorpal Scan
-        uses: Checkmarx/vorpal-action@v1
+        uses: checkmarx/vorpal-reviewdog-github-action@v1.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_path: "source.zip"
