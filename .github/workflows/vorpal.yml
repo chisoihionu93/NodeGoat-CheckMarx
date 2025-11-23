@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  vorpal_scan:
+  vorpal:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,4 +14,6 @@ jobs:
       - name: Vorpal with reviewdog
         uses: checkmarx/vorpal-reviewdog-github-action@v1.0.0
         with:
-          path: "."
+          source_path: .
+          filter_mode: file
+          github_token: ${{ secrets.github_token }}
