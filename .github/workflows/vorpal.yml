@@ -24,8 +24,6 @@ jobs:
 
       - name: Run Vorpal Scan
         uses: checkmarx/vorpal-reviewdog-github-action@v1.0.0
-
-      - name: Show Vorpal results
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_path: "server.js"
