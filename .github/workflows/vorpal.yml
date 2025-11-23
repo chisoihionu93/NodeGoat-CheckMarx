@@ -22,11 +22,8 @@ jobs:
           echo "Files in workspace:"
           ls -R
 
-      - name: Zip source code
-        run: zip -r source.zip .
-
       - name: Run Vorpal Scan
         uses: checkmarx/vorpal-reviewdog-github-action@v1.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_path: "source.zip"
+          source_path: "chart-data-morris.js"
