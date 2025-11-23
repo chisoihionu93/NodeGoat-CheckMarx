@@ -8,15 +8,25 @@ on:
 jobs:
   vorpal:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Debug workspace
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files in workspace:"
+          ls -R
 
       - name: Zip source code
-        run: zip -r source.zip 
-      
-      - name: Vorpal with reviewdog
-        uses: checkmarx/vorpal-reviewdog-github-action@v1.0.0
+        run: zip -r source.zip .
+
+      - name: Run Vorpal Scan
+        uses: Checkmarx/vorpal-action@v1
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           source_path: "source.zip"
-          filter_mode: file
-          github_token: ${{ secrets.github_token }}
