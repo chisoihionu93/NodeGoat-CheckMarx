@@ -10,10 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Zip source code
+        run: zip -r source.zip 
       
       - name: Vorpal with reviewdog
         uses: checkmarx/vorpal-reviewdog-github-action@v1.0.0
         with:
-          source_path: .
+          source_path: "source.zip"
           filter_mode: file
           github_token: ${{ secrets.github_token }}
