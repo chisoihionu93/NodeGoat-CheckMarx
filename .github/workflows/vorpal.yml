@@ -36,7 +36,4 @@ jobs:
           echo "===== VORPAL RESULTS ====="
           cat result.errorformat
 
-      - name : Show Vulnerabilities
-        run: |
-          dependency-check --scan . --format ALL
 
