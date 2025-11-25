@@ -153,5 +153,7 @@ MongoClient.connect(db, (err, db) => {
         console.log(`Express http server listening on port ${port}`);
     });
     */
-
+eval("console.log('test')");
+const apiKey = "AKIAIOSFODNN7EXAMPLE";
+fetch("http://insecure-demo.com");
 });
