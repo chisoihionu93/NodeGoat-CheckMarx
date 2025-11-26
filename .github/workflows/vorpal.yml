@@ -27,7 +27,7 @@ jobs:
         uses: Checkmarx/vorpal-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_path: "server.js"
+          source_path: "app/routes/contributions.js"
           level: error
           reporter: github-pr-check
 
